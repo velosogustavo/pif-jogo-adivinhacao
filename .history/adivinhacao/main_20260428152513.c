@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include "game.h"
+
+
 
 int main(void) {
-    rng_init();
+    rng_init(); // RF01
     int op = 0;
 
     do {
@@ -11,21 +11,20 @@ int main(void) {
         printf("2. Analisar historico\n");
         printf("0. Sair\n");
         printf("Escolha: ");
-        fflush(stdout);
 
         if (scanf("%d", &op) != 1) {
-            while (getchar() != '\n');
+            while (getchar() != '\n'); // Limpa buffer (Tratamento de erro)
             continue;
         }
 
         switch (op) {
             case 1: {
-                Session s = game_new_session();
-                history_save(s);
+                Session s = game_play(); // Deve conter o loop de 1 a 100 (RF02)
+                io_save_session(s);      // Salva em arquivo texto (RF03)
                 break;
             }
             case 2:
-                history_load_and_print();
+                io_display_history();    // Parsing CSV e exibicao (RF04)
                 break;
             case 0:
                 printf("Saindo...\n");
@@ -33,7 +32,6 @@ int main(void) {
             default:
                 printf("Opcao invalida!\n");
         }
-
     } while (op != 0);
 
     return 0;

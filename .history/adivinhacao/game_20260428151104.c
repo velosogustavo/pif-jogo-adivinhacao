@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include "game.h"
@@ -15,16 +14,10 @@ Session game_new_session(void) {
     Session s = { 0 };
     s.secret = rng_generate(1, 100);
 
-    // Gera timestamp simples (Requisito RF03)
-    time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-    sprintf(s.timestamp, "%04d-%02d-%02d %02d:%02d:%02d", 
-            tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
-
     int guess = 0;
     printf("\nNovo Jogo! Tente adivinhar o numero entre 1 e 100.\n");
 
-    while(guess != s.secret && s.total_attempts < MAX_GUESSES) {
+    while(guess != s.secret && s.total_guesses < MAX_GUESSES) {
         printf("Digite seu palpite: ");
         if(scanf("%d", &guess) != 1) {
             printf("Entrada invalida. Por favor, digite um numero.\n");
@@ -32,24 +25,19 @@ Session game_new_session(void) {
             continue;
         }
         
-        if(guess < 1 || guess > 100) {
-            printf("Palpite fora do intervalo. Tente novamente.\n");
-            continue;
-        }
-
-        s.guesses_list[s.total_attempts++] = guess;
+        if()
 
         if (guess < s.secret) {
             printf("Muito baixo! Tente novamente.\n");
-            s.bias_low++;
+            s.bias_low = guess + 1;
         } else if (guess > s.secret) {
             printf("Muito alto! Tente novamente.\n");
-            s.bias_high++;
+            s.bias_high = guess - 1;
         } else {
             printf("Parabéns! Você adivinhou o número!\n");
         }
 
-        
+        s.guesses_list[s.total_guesses++] = guess;
     }
     return s;
 }

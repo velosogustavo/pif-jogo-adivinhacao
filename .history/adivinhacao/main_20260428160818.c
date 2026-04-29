@@ -21,11 +21,11 @@ int main(void) {
         switch (op) {
             case 1: {
                 Session s = game_new_session();
-                history_save(s);
+                io_save_session(s);
                 break;
             }
             case 2:
-                history_load_and_print();
+                io_display_history();
                 break;
             case 0:
                 printf("Saindo...\n");

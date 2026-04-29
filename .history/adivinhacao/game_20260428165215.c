@@ -37,7 +37,7 @@ Session game_new_session(void) {
             continue;
         }
 
-        s.guesses_list[s.total_attempts++] = guess;
+        s.guesses_list[s.total_guesses++] = guess;
 
         if (guess < s.secret) {
             printf("Muito baixo! Tente novamente.\n");

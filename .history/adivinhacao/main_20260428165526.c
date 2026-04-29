@@ -25,7 +25,7 @@ int main(void) {
                 break;
             }
             case 2:
-                history_load_and_print();
+                io_display_history();
                 break;
             case 0:
                 printf("Saindo...\n");

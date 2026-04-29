@@ -14,8 +14,8 @@ typedef struct {
 
 void    rng_init(void);
 int     rng_generate(int min, int max);
-Session game_new_session(void);
+Session game_new_session(void); // Realiza o loop de palpites
 void    history_save(Session s);
-void    history_load_and_print(void);
+void    history_load_and_print(void); // Exemplo de parsing/carregamento
 
 #endif
