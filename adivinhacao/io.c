@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "game.h"
 
 void history_save(Session s) {
@@ -18,20 +19,35 @@ void history_save(Session s) {
 
 void history_load_and_print(void) {
     FILE *f = fopen("historico.txt", "r");
-    if (!f) {
-        printf("Nenhum historico encontrado.\n"); // Tratamento de erro (Fonte 104)
-        return;
-    }
+    if (!f) return;
 
+    int tentativas[100]; // Array para guardar os dados
+    int total_partidas = 0;
     char line[1024];
-    while (fgets(line, sizeof(line), f)) { // Uso de fgets (Fonte 25)
-        // Exemplo simples de parsing com strtok
-        char *token = strtok(line, ";");
-        if (token) printf("Data: %s | ", token); // Timestamp
+
+    printf("\n--- RELATORIO ANALITICO ---\n");
+    while (fgets(line, sizeof(line), f) && total_partidas < 100) {
+        char *token = strtok(line, ";"); // Data
+        strtok(NULL, ";"); // Pula segredo
+        token = strtok(NULL, ";"); // Pega tentativas
         
-        token = strtok(NULL, ";"); // Pula Alvo
-        token = strtok(NULL, ";"); // Tentativas
-        if (token) printf("Tentativas: %s\n", token);
+        if (token) {
+            int t = atoi(token);
+            tentativas[total_partidas++] = t;
+            printf("Partida %d: %d tentativas | %s\n", total_partidas, t, obter_heuristica(t));
+        }
     }
     fclose(f);
+
+    if (total_partidas > 0) {
+        int soma = soma_recursiva(tentativas, total_partidas);
+        float media = (float)soma / total_partidas;
+        int melhor = min_recursivo(tentativas, total_partidas);
+        int pior = max_recursivo(tentativas, total_partidas);
+
+        printf("\n--- ESTATISTICAS AGREGADAS ---\n");
+        printf("Media de palpites: %.2f\n", media);
+        printf("Melhor partida: %d\n", melhor);
+        printf("Pior partida: %d\n", pior);
+    }
 }

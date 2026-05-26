@@ -12,10 +12,16 @@ typedef struct {
     int guesses_list[MAX_GUESSES];
 } Session;
 
-void    rng_init(void);
-int     rng_generate(int min, int max);
+void rng_init(void);
+int rng_generate(int min, int max);
 Session game_new_session(void);
-void    history_save(Session s);
-void    history_load_and_print(void);
+void history_save(Session s);
+void history_load_and_print(void);
+
+// Capstone 2:
+int soma_recursiva(int v[], int n);
+int min_recursivo(int v[], int n);
+int max_recursivo(int v[], int n);
+const char* obter_heuristica(int tentativas);
 
 #endif
