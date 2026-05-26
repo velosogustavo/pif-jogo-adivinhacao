@@ -8,6 +8,7 @@
 * **Caio Gilles Costa Medeiros de Souza** — [GitHub](https://github.com/CaioGilles)
 * **Eliziane Mota de Souza**
 * **Luiz Felipe Matias Xavier** — [GitHub](https://github.com/LuizMXavier)
+* **Lucca Barbosa Spinelli**
 
 ## 📝 Sobre o Projeto
 Este repositório contém a implementação de um jogo de adivinhação desenvolvido em linguagem C. O projeto utiliza uma estrutura modular (arquivos `.c` e `.h`) e um sistema de geração de números aleatórios (RNG) para definir o número secreto a cada sessão.
