@@ -19,13 +19,13 @@ Para rodar o projeto localmente, certifique-se de ter o compilador `gcc` instala
 1. **Abra o terminal** na pasta do projeto.
 2. **Compile os arquivos:**
    ```bash
-   gcc -std=c11 -Wall -Wextra main.c game.c -o adivinha
+   gcc main.c game.c stats.c io.c -o jogo.exe
     ```
 - No Linux/macOS/Git Bash:
-    `./adivinha`
+    `./jogo.exe`
 
 - No Windows (CMD):
-    `adivinha.exe`
+    `jogo.exe`
 
 ## 🛠️ Estrutura de Arquivos
 - main.c: Ponto de entrada do programa.
