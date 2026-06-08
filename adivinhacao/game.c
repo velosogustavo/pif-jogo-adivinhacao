@@ -3,12 +3,6 @@
 #include <time.h>
 #include "game.h"
 
-// Protótipos das funções de estatística (recursivas)
-int soma_recursiva(int v[], int n);
-int min_recursivo(int v[], int n);
-int max_recursivo(int v[], int n);
-const char* obter_heuristica(int tentativas);
-
 void rng_init(void) {
     srand((unsigned int)time(NULL));
 }

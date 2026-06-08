@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "game.h"
+#include "io.h"
 
 int main(void) {
     rng_init();
