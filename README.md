@@ -159,7 +159,7 @@ A busca binaria otima resolve qualquer numero entre 1 e 100 em no maximo **7 ten
 O arquivo `test_gen.c` simula 105 partidas usando busca binaria com 20% de chance de palpite aleatorio (semente fixa 42 para reproducibilidade). O resultado e gravado em `historico.txt` e pode ser analisado pela opcao 2 do menu principal.
 
 Apos gerar os testes, a saida esperada do relatorio incluira:
-- **Media**: aprox. 7 tentativas
-- **Desvio padrao**: aprox. 2
-- **Melhor partida**: 1 tentativa
-- **Pior partida**: ~15 tentativas
+- **Media**: aprox. 6 tentativas
+- **Desvio padrao**: aprox. 1.4
+- **Melhor partida**: 3 tentativas
+- **Pior partida**: 9 tentativas
